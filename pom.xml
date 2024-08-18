@@ -58,6 +58,12 @@
 			<artifactId>freetts</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.daisy.pipeline.modules/tts-common -->
+		<dependency>
+			<groupId>org.daisy.pipeline.modules</groupId>
+			<artifactId>tts-common</artifactId>
+			<version>7.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
