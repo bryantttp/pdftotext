@@ -15,15 +15,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.pdftoaudio.demo.services.PDFReader;
 import com.example.pdftoaudio.demo.services.TextToSpeech;
+import com.example.pdftoaudio.demo.services.TextToSpeechDaisy;
 
 @RestController
 @RequestMapping("/pdftoaudio")
 public class PDFToSpeechController {
-    private final TextToSpeech textToSpeech;
+    private final TextToSpeechDaisy textToSpeech;
     private final PDFReader pdfReader;
 
     public PDFToSpeechController() {
-        this.textToSpeech = new TextToSpeech();
+        this.textToSpeech = new TextToSpeechDaisy();
         this.pdfReader = new PDFReader();
     }
 
@@ -43,7 +44,7 @@ public class PDFToSpeechController {
             String extractedText = pdfReader.extractText(pdfFile);
 
             // Step 3: Convert the extracted text to speech
-            File audioFile = textToSpeech.speakToFile(extractedText, "E:\\Coding\\Java Projects\\pdftotext\\test.wav");
+            File audioFile = textToSpeech.convertTextToSpeech(extractedText, "test.wav");
 
             // Step 4: Return the audio file as a download
             return ResponseEntity.status(HttpStatus.OK).body("File converted");
